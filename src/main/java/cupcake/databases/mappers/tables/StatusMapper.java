@@ -13,7 +13,7 @@ import java.util.Map;
 public final class StatusMapper implements TemplateDtoCreator
 {
     public static final Integer DEFAULT_ID = 1;
-    public static final Integer DONE_ID = 7;
+    public static final Integer DONE_ID = 6;
     private static final StatusMapper DTO_CREATOR = new StatusMapper();
     
     private StatusMapper()
