@@ -1,0 +1,163 @@
+/*:root {*/
+/*    font-size: 16px;*/
+/*}*/
+
+/*body {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*button {*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+
+/*    width: 7.4rem;*/
+/*    height: 3rem;*/
+/*    font-size: 1.3rem;*/
+
+/*    background-color: #1E90FF;*/
+/*    color: white;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*button:hover {*/
+/*    background-color: royalblue;*/
+/*}*/
+
+/*#logo {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+
+/*    border-radius: 10px;*/
+
+/*    background-color: #37195D;*/
+/*}*/
+
+/*nav {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    background-color: lightgrey;*/
+
+/*    padding: 10px;*/
+/*    margin-bottom: 10px;*/
+/*    margin-top: 10px;*/
+/*    border-radius: 10px;*/
+
+/*    font-size: 1.5rem;*/
+/*}*/
+
+/*#left-nav {*/
+/*    font-family: Arial, serif;*/
+/*}*/
+
+/*#right-nav {*/
+/*    font-family: Arial, serif;*/
+/*}*/
+
+/*#content {*/
+/*    background-color: lightgrey;*/
+/*    !*border-radius: 10px;*!*/
+/*}*/
+
+#your-order {
+    font-size: 1.4rem;
+    font-family: Arial, serif;
+    padding-left: 18px;
+
+    border: 1px solid black;
+}
+
+#order {
+    font-family: Arial, serif;
+    padding-left: 18px;
+    
+    height: 80%;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    border-top: 1px solid black;
+}
+
+#order-price {
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 1.5rem;
+    font-family: Arial, serif;
+    padding-left: 18px;
+    padding-right: 18px;
+
+    border-top: 1px solid black;
+}
+
+.purchase {
+    padding-top: 14px;
+}
+
+.orderline-delete-button {
+    width: fit-content;
+    height: fit-content;
+    font-size: 1rem;
+    background-color: red;
+    margin-bottom: 1em;
+}
+
+.orderline-delete-button:hover {
+    background-color: darkred;
+    color: white;
+}
+
+.orderline-delete-div {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    /*padding-bottom: 1em;*/
+}
+
+.orderline-whole-div {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    border-bottom: 3px solid darkgray;
+    margin-top: 0.5em;
+}
+
+.orderline-content-div p {
+    font-weight: bold;
+}
+
+.orderline-content-div span {
+    font-weight: normal;
+}
+
+.order-price form {
+    padding-left: 10px;
+}
+
+.order-price p {
+    margin-top: 20px;
+}
+
+p {
+    margin-block-start: 0px;
+}
+
+.order-price div {
+    display: block;
+
+    padding-left: 10px;
+}
+
+@media screen and (max-width: 680px) {
+
+    #order-price {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-end;
+    }
+
+}

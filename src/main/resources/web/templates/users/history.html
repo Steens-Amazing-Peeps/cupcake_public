@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>History</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+    <link href="../../public/css/users/history.css" th:href="@{/css/users/history.css}" rel="stylesheet"/>
+</head>
+
+
+<body>
+
+<div class="page" id="page">
+
+    <!--logo, but fuck that-->
+    <header class="logo" id="logo">
+        <a href="../index.html" th:href="@{/}">
+            <img src="../../public/images/cupcake_logo.png" width="80%" th:src="@{/images/cupcake_logo.png}">
+        </a>
+    </header>
+
+    <!--left topnote buttons, right topnote buttons-->
+    <nav>
+
+        <div class="left-nav" id="left-nav">
+
+            <div class="underline-animation">
+                <!--            Looks nicer than a link-->
+                <form method="get" action="../order-history" class="inline">
+                    <button type="submit" class="link-button">Bestillinger</button>
+                </form>
+            </div>
+
+            <div class="underline-animation">
+                <!--            Looks nicer than a link-->
+                <form method="get" action="../cart" class="inline">
+                    <button type="submit" class="link-button">Kurv</button>
+                </form>
+            </div>
+
+        </div>
+        <div class="right-nav" id="right-nav">
+
+            <!--            Not Logged In-->
+
+            <div class="underline-animation">
+                <!--            Looks nicer than a link-->
+                <form method="get" action="../create-account" class="inline" th:if="${session.currentUser} == null">
+                    <button type="submit" class="link-button" th:if="${session.currentUser} == null">Opret
+                        Bruger
+                    </button>
+                </form>
+            </div>
+
+            <div class="underline-animation">
+                <!--            Looks nicer than a link-->
+                <form method="get" action="../login" class="inline" th:if="${session.currentUser} == null">
+                    <button type="submit" class="link-button" th:if="${session.currentUser} == null">Log Ind</button>
+                </form>
+            </div>
+
+            <!--            Thymleaf shows above or below-->
+
+            <!--            Logged In-->
+            <span th:text="${session.currentUser.email}" th:if="${session.currentUser} != null">E-Mail</span>
+
+            <div class="underline-animation">
+                <!--            Looks nicer than a link-->
+                <form method="post" action="../logout" class="inline" th:if="${session.currentUser} != null">
+                    <button type="submit" class="link-button" th:if="${session.currentUser} != null">Log Ud</button>
+                </form>
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <div class="content" id="content">
+
+        <div class="intro-text" id="intro-text">
+            <h1 class="title" id="title">Dine Bestillinger</h1>
+            <!--            <h2 class="subtitle" id="subtitle">Subtitle here!</h2>-->
+        </div>
+
+        <div class="error">
+            <p class="error-msg" style="white-space: pre-line" th:unless="${#strings.isEmpty(msg)}"
+               th:text="${msg}"></p>
+        </div>
+
+
+        <!--                <thead class="order-header">-->
+        <!--                <div>-->
+        <!--                    <h2>Order Id</h2>-->
+        <!--                    <h2>Action</h2>-->
+        <!--                </div>-->
+
+        <!--                </thead>-->
+
+        <!--        Admin needs 4 different filters-->
+        <!--        Show my orders (default, also what customer has)-->
+        <!--        Show all orders-->
+        <!--        Show all customers-->
+        <!--        Show all orders by this customer-->
+
+        <form class="dropdowns" method="post"
+              th:if="*{session.currentUser != null}? ${session.currentUser.roleId == 2}">
+
+            <!--            <div class="dropdown-pair">-->
+            <!--                <label class="dropdown-label" for="filter"-->
+            <!--                       th:if="*{session.currentUser != null}? ${session.currentUser.roleId == 2}">Denne Brugers-->
+            <!--                    Bestillinger</label>-->
+
+            <div>
+                <select name="filter" id="filter"
+                        th:if="*{session.currentUser != null}? ${session.currentUser.roleId == 2}">
+
+                    <option value="me">Mine Bestillinger</option>
+                    <option value="all">Alle Brugere og Deres Bestillinger</option>
+
+                    <optgroup label="Brugere">
+                        <option th:each="user : ${session.userMap}"
+                                th:unless="${user.value.userId}==${session.currentUser.userId}"
+                                th:value="${user.key}"
+                                th:text="${user.value.email}">
+                        </option>
+                    </optgroup>
+
+                </select>
+            </div>
+            <!--            </div>-->
+
+            <div>
+                <button type="submit" formaction="/order-history/admin-sort" name="adminSort"
+                        th:if="*{session.currentUser != null}? ${session.currentUser.roleId == 2}">Sorter
+                </button>
+            </div>
+
+        </form>
+
+        <!--        The below code is mostly the same for all of them, probably only need to change the value used for the loop-->
+
+        <div class="box">
+            <div class="order-box">
+                <div class="user" th:each="userExtendedEntry : ${session.currentOrderHistory}">
+
+                    <span class="order-meta" style="white-space: pre-wrap;"
+                          th:text="${userExtendedEntry.value.meta}">
+                    </span>
+
+                    <br>
+
+                    <div class="order" th:each="orderExtendedEntry : ${userExtendedEntry.value.ordersExtended}">
+                        <form method="post">
+                        <span class="order-content" style="white-space: pre-wrap;"
+                              th:text="${orderExtendedEntry.value.meta}">
+                        </span>
+
+                            <input type="hidden" id="orderOwnerId" name="orderOwnerId"
+                                   th:value="${userExtendedEntry.key}"
+                                   th:if="*{session.currentUser != null}? ${session.currentUser.roleId == 2}">
+                            </input>
+
+                            <input type="hidden" id="orderId" name="orderId"
+                                   th:value="${orderExtendedEntry.key}"
+                                   th:if="*{session.currentUser != null}? ${session.currentUser.roleId == 2}">
+                            </input>
+
+                            <span class="order-buttons-surround-span">
+
+                                  <span id="order-button-done" class="order-button-span"
+                                        th:if="*{session.currentUser != null}? ${session.currentUser.roleId == 2}">
+
+                                      <button id="done-button" class="order-button" type="submit"
+                                              formaction="/order-history/done"
+                                              th:if="*{session.currentUser != null}? ${session.currentUser.roleId == 2}">Færdig
+                                     </button>
+
+                                 </span>
+
+                                 <span id="order-button-remove" class="order-button-span"
+                                       th:if="*{session.currentUser != null}? ${session.currentUser.roleId == 2}">
+
+                                        <button id="remove-button" class="order-button" type="submit"
+                                                formaction="/order-history/remove"
+                                                th:if="*{session.currentUser != null}? ${session.currentUser.roleId == 2}">Fjern
+                                         </button>
+
+                                </span>
+
+                            </span>
+                        </form>
+                    </div>
+
+
+                    <!--                Admin Only, probably should be moved to separate Html-->
+
+
+                </div> <!-- order loop end -->
+            </div>
+        </div>
+
+
+        <!--        implement admin view, see above-->
+
+    </div> <!-- Content -->
+
+</div> <!-- Page -->
+
+</body>
+</html>

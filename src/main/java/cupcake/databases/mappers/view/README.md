@@ -1,0 +1,1 @@
+Depricated this, perhaps permamently, issues with getting access to TemplateSharedCrud, found no solutions that didn't suck ass

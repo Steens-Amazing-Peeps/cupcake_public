@@ -1,0 +1,456 @@
+/*Nikolaj*/
+
+/*!* Style sheet to the kyle demp *!*/
+
+
+/*:root {*/
+/*    font-size: 16px;*/
+/*}*/
+
+/*div {*/
+/*    !*background-color: darkgrey;*!*/
+/*    !*border: 1px #333333 ridge;*!*/
+/*    !*min-height: 5px;*!*/
+/*}*/
+
+/*body {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*button {*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+
+/*    width: 7.4rem;*/
+/*    height: 3.4rem;*/
+/*    font-size: 1.3rem;*/
+/*    font-weight: bold;*/
+
+/*    background-color: #1E90FF;*/
+/*    color: white;*/
+/*    cursor: pointer;*/
+/*}*/
+
+/*button:hover {*/
+/*    background-color: royalblue;*/
+
+/*    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);*/
+/*}*/
+
+/*select {*/
+/*    border-radius: 5px;*/
+
+/*    font-weight: bold;*/
+/*}*/
+
+/*#page {*/
+/*    !*min-height: 800px;*!*/
+/*    !*max-width: 800px;*!*/
+/*    !*min-width: 700px;*!*/
+/*}*/
+
+/*#logo {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+
+/*    border-radius: 10px;*/
+
+/*    background-color: #37195D;*/
+/*}*/
+
+/*nav {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    background-color: lightgrey;*/
+
+/*    padding: 10px;*/
+/*    margin-bottom: 10px;*/
+/*    margin-top: 10px;*/
+/*    border-radius: 10px;*/
+
+/*    font-size: 1.5rem;*/
+/*}*/
+
+/*#left-nav {*/
+/*    font-family: Arial, serif;*/
+/*}*/
+
+/*#right-nav {*/
+/*    font-family: Arial, serif;*/
+/*}*/
+
+/*#content {*/
+/*    background-color: lightgrey;*/
+/*    !*border: 1px solid black;*!*/
+/*    border-radius: 10px;*/
+/*}*/
+
+/*#intro-text {*/
+/*    padding: 20px;*/
+
+/*    font-family: Calibri, serif;*/
+/*}*/
+
+/*#title {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*#subtitle {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*}*/
+
+/*#dropdowns {*/
+/*    display: flex;*/
+/*    justify-content: space-around;*/
+
+/*    padding-left: 20%;*/
+/*    padding-right: 20%;*/
+/*    gap: 10px;*/
+/*}*/
+
+/*#dropdowns select {*/
+/*    flex-grow: 1;*/
+/*    min-height: 2.4rem;*/
+/*}*/
+
+/*#comment{*/
+/*    display: flex;*/
+/*    justify-content: start;*/
+
+/*    padding: 10px 20% 10px 20%;*/
+/*    margin: 10px 0 10px 0%;*/
+/*}*/
+
+/*textarea{*/
+/*    display: flex;*/
+/*    flex-grow: 1;*/
+/*    max-width: 20rem;*/
+/*    min-width: 10rem;*/
+
+/*    max-height: 4.8rem;*/
+/*    min-height: 3rem;*/
+
+/*}*/
+
+/*#checkout {*/
+/*    display: flex;*/
+/*    justify-content: end;*/
+
+/*    padding: 0% 20% 5% 5%;*/
+/*}*/
+
+/*!*.button-filler {*!*/
+/*!*    width: 8.4rem;*!*/
+/*!*}*!*/
+
+/*@media screen and (max-width: 680px) {*/
+
+/*    #dropdowns {*/
+/*        flex-direction: column;*/
+/*    }*/
+
+/*    nav {*/
+/*        flex-direction: column;*/
+/*        gap: 10px;*/
+/*    }*/
+
+/*    #checkout{*/
+/*        justify-content: end;*/
+/*    }*/
+
+/*    !*.button-filler {*!*/
+/*    !*    width: 0;*!*/
+/*    !*}*!*/
+/*}*/
+
+/*End of Nikolaj*/
+
+
+
+
+
+
+:root {
+    font-size: 16px;
+    font-family: Arial, serif;
+}
+
+div {
+    /*background-color: darkgrey;*/
+    /*border: 1px #333333 ridge;*/
+    /*min-height: 5px;*/
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    max-height: 90vh;
+
+    background-image: url("../images/Mocha-Cupcakes.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+button {
+    margin-bottom: 8px;
+
+    border-radius: 5px;
+    width: 8.4rem;
+    height: 2.4rem;
+    font-size: 1.2rem;
+    background-color: royalblue;
+    color: white;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: lightskyblue;
+    color: black;
+}
+
+.page {
+    min-height: 700px;
+    max-width: 900px;
+    /*min-width: 700px;*/
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    /*background-color: plum;*/
+
+    border-radius: 2px;
+
+    background-color: #37195D;
+}
+
+.logo a {
+    display: flex;
+    justify-content: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: lightpink;
+
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+    font-size: 1.5rem;
+
+    border-radius: 2px;
+
+    border: 2px solid transparent;
+}
+
+nav:hover {
+    transition: 0.5s;
+    border: 2px solid black;
+}
+
+/*.left-nav {*/
+/*    font-family: Arial, serif;*/
+/*}*/
+
+/*.right-nav {*/
+/*    font-family: Arial, serif;*/
+/*}*/
+
+.content {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 2px;
+
+}
+
+.intro-text {
+    padding: 20px;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+
+    font-size: 2.5rem;
+}
+
+.subtitle {
+    display: flex;
+    justify-content: center;
+}
+
+.error-msg {
+    border: 1px solid red;
+    padding: 10px;
+    color: red;
+    max-width: 400px;
+}
+
+.dropdowns {
+    display: flex;
+    justify-content: space-around;
+    padding-left: 20%;
+    padding-right: 20%;
+    gap: 10px;
+}
+
+.dropdown-pair{
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-start;
+}
+
+.dropdown-label{
+    font-size: 1.2rem;
+
+    -webkit-text-stroke-width: 0.01rem;
+    -webkit-text-stroke-color: black;
+}
+
+
+.dropdowns select {
+    flex-grow: 1;
+    min-height: 2.4rem;
+
+    font-size: 1.2rem;
+
+    border-radius: 5px;
+
+    background-color: purple;
+    color: white;
+    cursor: pointer;
+
+    transition: 0.3s;
+
+    -webkit-text-stroke-width: 0.01rem;
+    -webkit-text-stroke-color: black;
+}
+
+#newOrderlineBottom {
+    background-color: brown;
+}
+
+#newOrderlineTop  {
+    background-color: #37195D;
+}
+
+#newOrderlineAmount {
+    background-color: white;
+    color: black;
+}
+
+.comment{
+    display: flex;
+    justify-content: start;
+    padding: 10px 20% 10px 20%;
+    margin: 10px 0 10px 0%;
+}
+
+textarea{
+    display: flex;
+    flex-grow: 1;
+    max-width: 20rem;
+    min-width: 10rem;
+
+    max-height: 4.8rem;
+    min-height: 3rem;
+
+}
+
+.checkout {
+    display: flex;
+    justify-content: end;
+    padding: 5% 18.5% 5% 5%;
+}
+
+/*.button-filler {*/
+/*    width: 8.4rem;*/
+/*}*/
+
+
+/* For the super secret links that are actually buttons */
+
+.inline {
+    display: inline;
+}
+
+.link-button {
+    width: auto;
+    height: auto;
+
+
+
+    background: none;
+    border: none;
+    color: #532394;
+    /*text-decoration: underline;*/
+    cursor: pointer;
+    font-size: 1.5rem;
+    /*font-family: serif;*/
+}
+.link-button:focus {
+    outline: none;
+}
+.link-button:active {
+    color:red;
+}
+
+.underline-animation {
+    display: inline-block;
+    position: relative;
+
+    color: black;
+}
+
+.underline-animation::after {
+    position: absolute;
+    content: '';
+
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.28s ease-out;
+
+    background-color: black;
+}
+
+.underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+@media screen and (max-width: 680px) {
+
+    #dropdowns {
+        flex-direction: column;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #checkout{
+        justify-content: end;
+    }
+
+    /*.button-filler {*/
+    /*    width: 0;*/
+    /*}*/
+}
+

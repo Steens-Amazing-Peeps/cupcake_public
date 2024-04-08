@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>Frontpage</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+</head>
+
+
+<body>
+
+<div class="page" id="page">
+
+    <!--logo, but fuck that-->
+    <header class="logo" id="logo">
+        <a href="index.html" th:href="@{/}">
+            <img src="../public/images/cupcake_logo.png" width="80%" th:src="@{/images/cupcake_logo.png}">
+        </a>
+    </header>
+
+    <!--left topnote buttons, right topnote buttons-->
+    <nav>
+
+        <div class="left-nav" id="left-nav">
+            <div class="underline-animation">
+                <!--            Looks nicer than a link-->
+                <form method="get" action="/order-history" class="inline">
+                    <button type="submit" class="link-button">Bestillinger</button>
+                </form>
+            </div>
+
+            <div class="underline-animation">
+                <!--            Looks nicer than a link-->
+                <form method="get" action="/cart" class="inline">
+                    <button type="submit" class="link-button">Kurv</button>
+                </form>
+            </div>
+
+        </div>
+        <div class="right-nav" id="right-nav">
+
+            <!--            Not Logged In-->
+
+            <div class="underline-animation">
+                <!--            Looks nicer than a link-->
+                <form method="get" action="/create-account" class="inline" th:if="${session.currentUser} == null">
+                    <button type="submit" class="link-button" th:if="${session.currentUser} == null">Opret
+                        Bruger
+                    </button>
+                </form>
+            </div>
+
+            <div class="underline-animation">
+                <!--            Looks nicer than a link-->
+                <form method="get" action="/login" class="inline" th:if="${session.currentUser} == null">
+                    <button type="submit" class="link-button" th:if="${session.currentUser} == null">Log Ind</button>
+                </form>
+            </div>
+
+            <!--            Thymleaf shows above or below-->
+
+            <!--            Logged In-->
+            <span th:text="${session.currentUser.email}" th:if="${session.currentUser} != null">E-Mail</span>
+
+            <div class="underline-animation">
+                <!--            Looks nicer than a link-->
+                <form method="post" action="/logout" class="inline" th:if="${session.currentUser} != null">
+                    <button type="submit" class="link-button" th:if="${session.currentUser} != null">Log Ud</button>
+                </form>
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <div class="content" id="content">
+
+        <div class="intro-text" id="intro-text">
+            <h1 class="title" id="title">Velkommen ombord</h1>
+            <h2 class="subtitle" id="subtitle">Øens bedste cupcakes. Vælg og bestil her:</h2>
+        </div>
+
+
+        <form class="order" method="post" id="order">
+            <div class="dropdowns" id="dropdowns">
+
+                <div class="dropdown-pair">
+                    <label class="dropdown-label" for="newOrderlineBottom">Bund</label>
+                    <select name="newOrderlineBottom" id="newOrderlineBottom">
+                        <option value="" disabled selected>Vælg Bottom!</option>
+
+
+                        <option th:each="cupcakebottom : ${session.bottomMap}"
+                                th:value="${cupcakebottom.value.bottomId}"
+                                th:text="${cupcakebottom.value.addToCart}">
+                        </option>
+
+
+                    </select>
+                </div>
+
+                <div class="dropdown-pair">
+                    <label class="dropdown-label" for="newOrderlineTop">Top</label>
+                    <select name="newOrderlineTop" id="newOrderlineTop">
+                        <option value="" disabled selected>Vælg Top!</option>
+
+
+                        <option th:each="cupcaketop : ${session.topMap}"
+                                th:value="${cupcaketop.value.topId}"
+                                th:text="${cupcaketop.value.addToCart}">
+                        </option>
+                    </select>
+                </div>
+
+                <div class="dropdown-pair">
+                    <label class="dropdown-label" for="newOrderlineAmount">Antal</label>
+                    <select name="newOrderlineAmount" id="newOrderlineAmount">
+                        <option value="" disabled selected>Vælg Antal!</option>
+                        <option value="1">1 stk</option>
+                        <option value="2">2 stk</option>
+                        <option value="3">3 stk</option>
+                        <option value="4">4 stk</option>
+                        <option value="5">5 stk</option>
+                        <option value="6">6 stk</option>
+                        <option value="7">7 stk</option>
+                        <option value="8">8 stk</option>
+                        <option value="9">9 stk</option>
+                        <option value="10">10 stk</option>
+                    </select>
+                </div>
+
+            </div>
+        </form>
+
+        <div class="checkout" id="checkout">
+            <!--            <div class="button-filler"></div>-->
+            <!--            <div class="button-filler"></div>-->
+            <button type="submit" formaction="cupcakeSend" form="order">Læg i Kurv!</button>
+        </div>
+
+        <div class="checkout">
+            <p class="error-msg" style="white-space: pre-line" th:unless="${#strings.isEmpty(msg)}"
+               th:text="${msg}"></p>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

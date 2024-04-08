@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <title>Create</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../../public/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet"/>
+    <!--    <link href="../public/css/login.css" th:href="@{/css/login.css}" rel="stylesheet"/>-->
+    <link href="../../public/css/users/create.css" th:href="@{/css/users/create.css}" rel="stylesheet"/>
+</head>
+
+
+<body>
+
+<div class="page" id="page">
+
+    <!--logo, but fuck that-->
+    <header class="logo" id="logo">
+        <a href="../index.html" th:href="@{/}">
+            <img src="../../public/images/cupcake_logo.png" width="80%" th:src="@{/images/cupcake_logo.png}">
+        </a>
+    </header>
+
+    <!--left topnote buttons, right topnote buttons-->
+    <nav>
+
+        <div class="left-nav" id="left-nav">
+
+            <div class="underline-animation">
+                <!--            Looks nicer than a link-->
+                <form method="get" action="../order-history" class="inline">
+                    <button type="submit" class="link-button">Bestillinger</button>
+                </form>
+            </div>
+
+            <div class="underline-animation">
+                <!--            Looks nicer than a link-->
+                <form method="get" action="../cart" class="inline">
+                    <button type="submit" class="link-button">Kurv</button>
+                </form>
+            </div>
+
+        </div>
+        <div class="right-nav" id="right-nav">
+
+            <!--            Not Logged In-->
+
+            <div class="underline-animation">
+                <!--            Looks nicer than a link-->
+                <form method="get" action="../create-account" class="inline" th:if="${session.currentUser} == null">
+                    <button type="submit" class="link-button" th:if="${session.currentUser} == null">Opret
+                        Bruger
+                    </button>
+                </form>
+            </div>
+
+            <div class="underline-animation">
+                <!--            Looks nicer than a link-->
+                <form method="get" action="../login" class="inline" th:if="${session.currentUser} == null">
+                    <button type="submit" class="link-button" th:if="${session.currentUser} == null">Log Ind</button>
+                </form>
+            </div>
+
+            <!--            Thymleaf shows above or below-->
+
+            <!--            Logged In-->
+            <span th:text="${session.currentUser.email}" th:if="${session.currentUser} != null">E-Mail</span>
+
+            <div class="underline-animation">
+                <!--            Looks nicer than a link-->
+                <form method="post" action="../logout" class="inline" th:if="${session.currentUser} != null">
+                    <button type="submit" class="link-button" th:if="${session.currentUser} != null">Log Ud</button>
+                </form>
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <div class="content" id="content">
+
+        <div class="intro-text" id="intro-text">
+            <h1 class="title" id="title">Opret bruger</h1>
+            <h2 class="subtitle" id="subtitle">Opret din bruger. Benyt venligst en gyldig email adresse!</h2>
+        </div>
+
+        <div class="create">
+            <form method="post">
+
+                <div class="create-div">
+                    <span><i class='user-icon'></i></span>
+                    <input type="text" id="email" name="email" required placeholder="Email"><br>
+                </div>
+
+                <div class="create-div">
+                    <span><i class='password-icon'></i></span>
+                    <input type="password" id="password" name="password" required placeholder="Password"><br>
+                </div>
+
+                <div class="create-div">
+                    <span><i class='password-icon'></i></span>
+                    <input type="password" id="verify-password" name="verify-password" required
+                           placeholder="Bekræft password"><br>
+                </div>
+
+<!--                <br>-->
+
+                <div class="create-button" id="create-button">
+                    <button type="submit">Opret</button>
+                </div>
+
+                <div>
+                    <p class="error-msg" style="white-space: pre-line" th:unless="${#strings.isEmpty(msg)}"
+                       th:text="${msg}"></p>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
