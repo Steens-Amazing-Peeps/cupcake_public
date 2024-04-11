@@ -115,6 +115,7 @@
             <form class="purchase" method="post">
                 <button type="submit" formaction="/cart/buy">Bestil</button>
             </form>
+<!--            Probably should delete the div below, it makes the success message not show up-->
             <div th:unless="${#strings.isEmpty(msg)}">
                 <p class="error-msg" style="white-space: pre-line" th:unless="${#strings.isEmpty(msg)}"
                    th:text="${msg}"></p>

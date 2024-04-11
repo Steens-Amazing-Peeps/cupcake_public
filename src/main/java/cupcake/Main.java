@@ -13,10 +13,18 @@ import cupcake.databases.persistence.ConnectionPool;
 
 public class Main
 {
-    private static final String USER = "postgres";
-    private static final String PASSWORD = "postgres";
-    private static final String URL = "jdbc:postgresql://localhost:5432/%s?serverTimezone=CET&useSSL=false&allowPublicKeyRetrieval=true";
-    private static final String DB = "cupcake";
+    static {//Change these to change the log-in location of the database
+
+//        DatabaseLogIn.setDatabaseConfig( DatabaseLogIn.CONFIG_LOCALHOST );
+
+//        DatabaseLogIn.setDatabaseConfig( DatabaseLogIn.CONFIG_STEENS_LAPTOP_LOCAL );
+        DatabaseLogIn.setDatabaseConfig( DatabaseLogIn.CONFIG_STEENS_LAPTOP_REMOTE );
+    }
+    
+    private static final String USER = DatabaseLogIn.getUser();
+    private static final String PASSWORD = DatabaseLogIn.getPassword();
+    private static final String URL = DatabaseLogIn.getUrl();
+    private static final String DB = DatabaseLogIn.getName();
     
     private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getInstance( USER, PASSWORD, URL, DB );
     
